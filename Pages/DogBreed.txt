@@ -1,0 +1,75 @@
+<apex:page controller="DogBreedController" action="{!loadDAta}" showHeader="false">
+   <html class=" ext-strict" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <apex:stylesheet value="{!URLFOR($Resource.LightningDesignWinter17, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+      <style>
+         .LightningDesignWinter17 hr {
+         margin: 0rem !important;
+         }
+         .LightningDesignWinter17 .slds-is-disabled {
+         visibility: hidden;
+         }
+         .cursor{
+         cursor:pointer;
+         }
+      </style>
+      <script>
+         function showSubBreeds(subBreedDivId){
+             document.getElementById(subBreedDivId+'rightArrow').classList.add('slds-hide');
+             document.getElementById(subBreedDivId+'downArrow').classList.remove('slds-hide');
+             document.getElementById(subBreedDivId).classList.remove('slds-hide');
+             document.getElementById('toExpand'+subBreedDivId).classList.add('slds-hide');
+             document.getElementById('toCollapse'+subBreedDivId).classList.remove('slds-hide');
+             
+         }
+         
+         function hideSubBreeds(subBreedDivId){
+         document.getElementById(subBreedDivId+'rightArrow').classList.remove('slds-hide');
+             document.getElementById(subBreedDivId+'downArrow').classList.add('slds-hide');
+             document.getElementById(subBreedDivId).classList.add('slds-hide');
+             
+             document.getElementById('toExpand'+subBreedDivId).classList.remove('slds-hide');
+             document.getElementById('toCollapse'+subBreedDivId).classList.add('slds-hide');
+         }
+         
+      </script>
+      <body style="padding:2rem;">
+         <apex:form styleclass="LightningDesignWinter17">
+            <ul class="slds-tree">
+               <apex:repeat value="{!countSubBreedsMap}" var="breedGroup">
+                  <li>
+                  <div class="slds-tree__item">
+                     <span style="    margin-top: 0.5rem;" id="{!breedGroup}rightArrow" class="slds-button_icon slds-m-right_x-small {!IF(countSubBreedsMap[breedGroup].count == 0, 'slds-is-disabled', 'cursor')}" aria-hidden="true" tabindex="-1" title="Expand sub breeds" onclick="showSubBreeds('{!breedGroup}')">
+                        <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                           <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, '/assets/icons/utility-sprite/svg/symbols.svg#chevronright')}"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Expand Tree Item</span>
+                     </span>
+                     <span id="toExpand{!breedGroup}" class="cursor" style="padding-left:0.5em;" onclick="showSubBreeds('{!breedGroup}')">{!breedGroup}</span>
+                     <span style="    margin-top: 0.5rem;" id="{!breedGroup}downArrow" class="slds-button_icon slds-m-right_x-small slds-hide {!IF(countSubBreedsMap[breedGroup].count == 0, 'slds-is-disabled', 'cursor')}" aria-hidden="true" tabindex="-1" title="Expand sub breeds" onclick="hideSubBreeds('{!breedGroup}')">
+                        <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                           <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, '/assets/icons/utility-sprite/svg/symbols.svg#chevrondown')}"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Expand Tree Item</span>
+                     </span>
+                     <span id="toCollapse{!breedGroup}"  style="padding-left:0.5em;" class="cursor slds-hide" onclick="hideSubBreeds('{!breedGroup}')">{!breedGroup}</span>
+                    </div> 
+                     <div class="slds-hide" id="{!breedGroup}">
+                        <ul class="slds-tree">
+                           <apex:repeat value="{!countSubBreedsMap[breedGroup].subBreeds}" var="subBreed">
+                              <li>
+                                  <div class="slds-tree__item">
+                                     <span style="padding-left:3em;">
+                                     {!subBreed}
+                                     </span>
+                                  </div>
+                              </li>
+                           </apex:repeat>
+                        </ul>
+                     </div>
+                  </li>
+               </apex:repeat>
+            </ul>
+         </apex:form>
+      </body>
+   </html>
+</apex:page>
