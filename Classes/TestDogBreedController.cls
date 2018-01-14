@@ -4,7 +4,7 @@
  * Author : XXXXXX
  * Version : 0.0.18.1
  **************************************************************************/
-@isTest
+@isTest(seeAllData = false)
 private class TestDogBreedController {
     
     // test method to fetch dog breeds data
