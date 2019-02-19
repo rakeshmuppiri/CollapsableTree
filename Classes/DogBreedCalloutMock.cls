@@ -1,7 +1,7 @@
 /*************************************************************************
  * Class : DogBreedCalloutMock
  * Description : Mock class for callout response used in DogBreedController
- * Author : XXXXXX
+ * Author : XXXXXX Feb 18th 2019
  * Version : 0.0.18.1
  **************************************************************************/
  public class DogBreedCalloutMock implements HttpCalloutMock {
