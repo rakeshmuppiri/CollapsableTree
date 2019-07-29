@@ -1,0 +1,58 @@
+<apex:page >
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="images/favicon.png"/>
+    <link rel="author" href="https://www.linkedin.com/in/austinanderson1"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300"/>
+    <link rel="stylesheet" href="https://textangular.com/dist/textAngular.css" type="text/css"/>
+    <style>
+        textarea.ta-bind {
+            width: 100%;
+        }
+    </style>
+
+    <!-- enable this section or the non-minimized section below -->
+    
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js" type="text/javascript"></script>
+    
+<apex:includeScript value="{!URLFOR($Resource.AngularRichText, 'textAngular-master/dist/textAngular-rangy.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.AngularRichText, 'textAngular-master/dist/textAngular-sanitize.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.AngularRichText, 'textAngular-master/dist/textAngular.min.js')}"/>
+   
+<body>
+    <div id="ng-app" ng-app="textAngularDemo" ng-controller="demoController" class="ng-scope">
+       
+        
+        <div class="container lighter">
+            <div  ng-model="htmlContent" name="demo-editor" ta-text-editor-class="clearfix border-around container" ta-html-editor-class="border-around"></div>
+        </div>
+        <br/>
+        <div class="container text-center lighter border-around">
+            <div class="lighter roboto">
+                <p ng-bind="htmlContent" class="text-left text-med text-gray"></p>
+            </div>
+        </div>
+        
+       
+        <br/>
+    </div>
+    <script type="text/javascript">
+    angular.module("textAngularDemo", ['textAngular'])
+    .controller("demoController", ['$scope', 'textAngularManager', function demoController($scope, textAngularManager) {
+      $scope.version = textAngularManager.getVersion();
+      $scope.versionNumber = $scope.version.substring(1);
+      $scope.htmlContent = '<h2>Try me!</h2><p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li style="color: blue;">Super Easy <b>Theming</b> Options</li><li>Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li>Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE9+</li></ol>';
+    }]);
+    </script>
+</body>
+
+</html>
+
+</apex:page>

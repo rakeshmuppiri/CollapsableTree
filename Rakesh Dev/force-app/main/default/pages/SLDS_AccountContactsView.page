@@ -1,0 +1,408 @@
+<apex:page id="thePage" showHeader="false" controller="SLDS_AccountContactsViewCntrl" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+
+<head>
+  <title>Salesforce Lightning Design System Trailhead Project</title>
+  <apex:stylesheet value="{!URLFOR($Resource.LightningDesignWinter17, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/jquery.js')}"/>
+</head>
+<script>
+    var toggled = false;
+    function toggle(ele){
+        if(toggled == false){
+        ele.className = "slds-section slds-is-open slds-box";
+        ele.style.WebkitTransition = 'opacity 3s';
+        toggled = true;
+        }else{
+            ele.className = "slds-section slds-box";
+            toggled = false;
+        }
+    }
+</script>
+<style>
+.slds-spinner:after, .slds-spinner:before, .slds-spinner__dot-a:after, .slds-spinner__dot-a:before, .slds-spinner__dot-b:after, .slds-spinner__dot-b:before {           <apex:includeScript value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/jquery.js')}"/>
+        position: absolute;    
+        content: '';        
+        background: #981e32 !important;     
+        border-radius: 50%;     
+        animation-duration: 1s;     
+        animation-iteration-count: infinite;        
+    }       
+    textarea:focus, select:focus, input:focus, input[type]:focus, .uneditable-input:focus {         
+        border-color:#981e32 !important ;       
+        box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);     
+        outline: 0 none;        
+    }       
+    .LightningDesignWinter17 .slds-icon-text-default {       
+        fill: #981e32;      
+    }
+      .table{
+        table-layout: fixed;
+      }
+      select{
+        height:32px;
+      }
+      .iu_btn_primary {
+    background: #981e32 !important;
+    border-color: #6d1624 !important;
+    color: #fff !important;
+    text-align:center !important;
+    padding: 0.2%;      
+    }           }
+            
+    .LightningDesignWinter17 .slds-file-selector__dropzone {     
+        border: 0px;        
+    }
+    .iu_btn_primary:hover {
+    background: #fff !important;
+    border-color: # 981e32 !important;
+    color: #981e32 !important;
+    }
+    .buttonSection{
+        text-align: center;padding: 0.6%;
+    }
+            .fileType {     
+        cursor: pointer;        
+    }       
+            
+.fileType:after:hover {     
+    background: #fff !important;        
+    color: #981e32;     
+}       
+.slds-section__title-action{
+    background-color:#fff !important;
+}
+.slds-button:focus {
+    box-shadow: 0 0 0px #0070D2 !important;
+}
+#lightningDetailContent { display: none; visibility: hidden; }      
+#lightningDetail { display: none; visibility: hidden; }
+
+    </style>
+    <div class="LightningDesignWinter17">
+        <div id="lightning">        
+            <div class="slds-spinner_container">        
+                <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">     
+                    <div class="slds-spinner__dot-a"></div>     
+                    <div class="slds-spinner__dot-b"></div>     
+                </div>      
+            </div>      
+        </div>
+        <div id="lightningDetailContent">  
+        
+        <div class="slds-section slds-box" onclick="toggle(this)">
+          <h3 class="slds-section__title">
+            <button class="slds-button slds-section__title-action">
+              <svg class="slds-section__title-action-icon slds-button__icon slds-button__icon--left" aria-hidden="true">
+                <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, '/assets/icons/utility-sprite/svg/symbols.svg#switch')}"></use>     
+              </svg>Section Title</button>
+          </h3>
+          <div class="slds-section__content slds-theme--default">
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod
+              semper. Etiam porta sem malesuada magna mollis euismod.</p>
+          </div>
+        </div>
+     
+        <apex:outputPanel id="censusInformation">
+        <article class="slds-box slds-box--small">
+          <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+              
+              <div class="slds-media__body slds-truncate">
+                <h2>
+                  <a href="javascript:void(0);" class="slds-text-link--reset">
+                    <span class="slds-text-heading--small">{!acc.Name}</span>
+                  </a>
+                </h2>
+              </div>
+            </header>
+          </div>
+          
+          <div class="slds-grid">
+              <div class="slds-col">
+                <div class="slds-text-align--left">
+                      <div class="slds-panel__section">
+                          <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-has-divider--top slds-p-top--medium">
+                          <span class="slds-form-element__label">Account Number</span>
+                            <div class="slds-form-element__control">
+                              <span class="slds-form-element__static">{!acc.AccountNumber}</span>
+                            </div>
+                          </div>
+                          <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-top--medium">
+                          <span class="slds-form-element__label">Account Source</span>
+                            <div class="slds-form-element__control">
+                              <span class="slds-form-element__static">{!acc.AccountSource}</span>
+                            </div>
+                          </div>
+                       </div>
+                </div>
+              </div>
+              
+              <div class="slds-col">
+                <div class="slds-text-align--left">
+                      <div class="slds-panel__section">
+                          <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-has-divider--top slds-p-top--medium">
+                          
+                          <span class="slds-form-element__label">Phone</span>
+                            <div class="slds-form-element__control">
+                              <span class="slds-form-element__static">{!acc.Phone}</span>
+                            </div>
+                          </div>
+                          <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-top--medium">
+                          <span class="slds-form-element__label">Name</span>
+                            <div class="slds-form-element__control">
+                              <span class="slds-form-element__static">{!acc.Name}</span>
+                            </div>
+                          </div>
+                       </div>
+                </div>
+              </div>
+              
+           </div>   
+          </article>
+             </apex:outputPanel>
+             </div>
+    </div>
+    
+    <div class="LightningDesignWinter17" id="lightningDetail">
+    <apex:form >
+    <apex:actionFunction name="refreshDate" action="{!refreshDate}" status="spinnerStatus" oncomplete="renderSVG();" rerender="datasection, censusInformation"/>
+    <apex:actionFunction name="callSaveCensusMember" action="{!saveCensusMember}" status="spinnerStatus" oncomplete="renderSVG();" rerender="datasection, censusInformation"/>
+    
+    <apex:actionFunction name="callAddCensusMember" action="{!addCensusMember}" status="spinnerStatus" oncomplete="renderSVG();" rerender="datasection, censusInformation"/>
+    <apex:actionFunction name="callDeleteCensesMember" action="{!deleteCensusMember}" status="spinnerStatus" rerender="datasection, censusInformation" oncomplete="renderSVG();">
+        <apex:param name="actionIndex" value="actionIndex" assignTo="{!actionIndex}"/>
+    </apex:actionFunction>
+    <!----Save --->
+    <div class="buttonSection">
+    
+    <button class="slds-button slds-button--neutral slds-not-selected iu_btn_primary" aria-live="assertive" onclick="saveCensusMember(); return false;">
+          <span class="slds-text-not-selected">Save</span>
+     </button>
+     <button class="slds-button  slds-button--neutral slds-not-selected iu_btn_primary" aria-live="assertive" onclick="callAddCensusMember(); return false;">
+          <span class="slds-text-not-selected">Delete All Data</span>
+     </button>
+     <div class="slds-form-element__control slds-button  slds-button--neutral slds-not-selected iu_btn_primary">        
+        <div class="slds-file-selector ">       
+            <input class="slds-file-selector__input slds-assistive-text" value="{!contentFile}" type="file" id="file-upload-input-01" aria-describedby="file-selector-id" onchange="uploadCSV(); return false;" />      
+            <label for="file-upload-input-01">      
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">      
+                  <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, '/assets/icons/utility-sprite/svg/symbols.svg#upload')}"></use>     
+                </svg>Upload Files      
+            </label>        
+          </div>        
+      </div>
+     
+     </div>                           
+        <apex:outputPanel id="datasection">
+        <table class="table slds-table slds-table--bordered slds-table--cell-buffer">
+              <thead>
+                <tr class="slds-text-title--caps">
+                  <apex:repeat value="{!headers}" var="headerName">
+                      <th scope="col">
+                        <div class="slds-truncate" title="{!headerName.label}">{!headerName.label}</div>
+                      </th>
+                    </apex:repeat>
+                  <th scope="col" style="width:6%">
+                    <div class="slds-truncate" title="Contact"></div>
+                  </th>
+                </tr>
+              </thead>
+            </table>
+           
+            
+            <div style="overflow-y: auto; max-height: 200px;" id="scrollableSection">
+            
+            <apex:actionStatus id="spinnerStatus">
+                <apex:facet name="start">
+                    <div class="spinner">
+                <div class="slds-spinner_container">
+                  <div class="slds-spinner slds-spinner--small" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                  </div>
+                </div>
+                </div>
+                </apex:facet>
+            </apex:actionStatus>
+            <apex:variable value="0" var="index"/>
+            <table class="table slds-table slds-table--bordered slds-table--cell-buffer">
+                        <tbody>
+                            <tbody>
+                            <apex:repeat value="{!censusMembersList}" var="censMem">
+                            <tr>
+                                <apex:repeat value="{!headers}" var="headerName">
+                                    <th scope="row" data-label="{!headerName.label}">
+                                        <div class="slds-truncate">
+                                            <apex:inputField value="{!censMem[headerName.name]}" rendered="{!!headerName.isCalculated}" styleclass="slds-input"/>
+                                            <apex:outputField value="{!censMem[headerName.name]}" rendered="{!headerName.isCalculated}"/>
+                                        </div>
+                                      </th>
+                                </apex:repeat>
+                              
+                              <td data-label="Delete" style="width:6%">
+                                  <span class="slds-icon_container Icon" title="Delete" style="cursor:pointer;" id="{!censMem.Id}" onclick="deleteCensesMember({!index});">
+                                      <span class="slds-assistive-text">Delete</span>
+                                  </span>
+                              </td>
+                        </tr>
+                        <apex:variable var="index" value="{!VALUE(index) + 1}"/> 
+                        </apex:repeat>
+                        </tbody>
+                        </tbody>
+                    </table>
+                    <div id="mydiv"></div>
+            </div>
+        </apex:outputPanel>
+        <button style="margin: 1%;margin-left: 1.9%;" class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive" onclick="addCensusMember(); return false;">
+              <span class="slds-text-not-selected">
+                <svg aria-hidden="true" class="slds-button__icon--stateful slds-button__icon--left">
+                  <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17,
+              '/assets/icons/utility-sprite/svg/symbols.svg#add')}"></use>
+                </svg>Census Member</span>
+          </button>
+    </apex:form>
+    </div>
+    <script type="text/javascript">     
+var __sfdcSessionId = '{!GETSESSIONID()}';      
+</script>       
+<script src="../../soap/ajax/27.0/connection.js"        
+type="text/javascript"></script>
+
+    <script>
+    
+     String.prototype.replaceAll = function(search, replacement) {      
+        var target = this;      
+        return target.replace(new RegExp(search, 'g'), replacement);        
+    };      
+    function uploadCSV(){       
+        var file = file = document.getElementById('file-upload-input-01').files[0];     
+        //alert(file.result);       
+        var fileDisplayArea = document.getElementById('filecontent');       
+        if(file.type.includes('xml') || file.type.includes('csv')){     
+                        
+                var reader = new FileReader();      
+                var dataURL = reader.result;        
+                reader.onload = function(e) {       
+                            
+                    var data = reader.result;       
+                    var lines = data.split(/\r\n|\n/);      
+                    //alert('PP '+lines[0]);        
+                    var headings = lines[0].split(',');     
+                    var listCensMembers = new Array();      
+                    for (var j=1; j<lines.length-1; j++) {      
+                        var values = lines[j].split(',');       
+                        var acct = new sforce.SObject("Contact");     
+                        acct.AccountId = '{!accId}';     
+                        for(var i=0; i<headings.length; i++){       
+                            if(values[i] != ''){        
+                                if(headings[i].includes("date"))        
+                                    if(values[i].includes("/"))     
+                                        values[i] = values[i].replaceAll("/" , "-");        
+                                acct[headings[i]] = values[i];      
+                            }       
+                        }       
+                        listCensMembers.push(acct);     
+                                
+                    }       
+                    if(listCensMembers.length > 0){     
+                        try{        
+                        //alert(listCensMembers);       
+                        var result = sforce.connection.create(listCensMembers);     
+                        refreshData();      
+                        }catch(err ){       
+                            alert('Failed:'+err);       
+                        }       
+                    }       
+                }       
+                reader.readAsText(file);        
+                        
+        }else{      
+            alert('selected valid CSV/XML');        
+        }       
+                
+    }       
+    
+    
+    var scroll;
+    function addCensusMember(){
+        scroll = document.getElementById('scrollableSection').scrollTop;
+        scroll = scroll+54;
+        callAddCensusMember();
+        
+        return false;
+    }
+    function deleteCensesMember(thisid){
+        scroll = document.getElementById('scrollableSection').scrollTop;
+        callDeleteCensesMember(thisid);
+        //alert(thisid);
+    }
+    
+            var j$ = jQuery.noConflict();
+            j$(document).ready(function(){
+                j$(window).load(function() {        
+                    j$('#lightning').fadeOut( 100, function(){      
+                        j$('#lightningDetail').css("visibility","visible").css("display","block");          
+                        j$('#lightningDetailContent').css("visibility","visible").css("display","block");           
+                    });     
+                });
+                renderSVG();
+                
+            });
+              function renderSVG(){
+                var imageURL = '{!URLFOR($Resource.LightningDesignWinter17, 'assets/icons/utility-sprite/svg/symbols.svg#delete')}';
+                var SVG = j$('<svg/>', {
+                   class: 'slds-icon slds-icon--small slds-icon-text-default',
+                });
+
+                var SVGUse = j$('<use/>');
+                SVGUse.attr('xlink:href',imageURL);
+                
+                j$( ".Icon" ).each(function() {
+                  j$(this ).prepend(SVG.append(SVGUse));
+                  j$(this ).html(j$('.Icon').html());
+                });
+                document.getElementById('scrollableSection').scrollTop = scroll;
+              }
+              
+              function saveCensusMember(){                        
+                  scroll = document.getElementById('scrollableSection').scrollTop;      
+                  callSaveCensusMember();       
+              }         
+              function deleteAllCensusMembers(){        
+                  scroll = 0;       
+                  callDeleteCensusMembers();        
+              }    
+                
+              
+    </script>
+    <style>
+    .spinnerBg{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: 0.2;
+        z-index: 999999;
+        bottom:0;
+        position:fixed;
+    }
+    .spinner{
+        width: 100%;
+        height: 100%;
+        margin:auto;
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 9999999;
+        position:fixed;
+        opacity: 1;
+        bottom:0;
+    }
+</style>
+</html>
+</apex:page>

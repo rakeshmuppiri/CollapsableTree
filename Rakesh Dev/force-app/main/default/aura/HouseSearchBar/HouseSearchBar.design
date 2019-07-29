@@ -1,0 +1,4 @@
+<design:component label="House Name">
+	<design:attribute name="searchKey" label="House Name">
+    </design:attribute>
+</design:component>

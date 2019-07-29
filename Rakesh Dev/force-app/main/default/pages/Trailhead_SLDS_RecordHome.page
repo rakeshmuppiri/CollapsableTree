@@ -1,0 +1,238 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Salesforce Lightning Design System Trailhead Module</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <apex:stylesheet value="{!URLFOR($Resource.LightningDesignWinter17, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+</head>
+<body>
+
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="LightningDesignWinter17">
+
+    <!-- MASTHEAD -->
+    <p class="slds-text-heading--label slds-m-bottom--small">Salesforce Lightning Design System Trailhead Module</p>
+    <!-- / MASTHEAD -->
+
+    <!-- PAGE HEADER -->
+<div class="slds-page-header" role="banner">
+
+  <!-- PAGE HEADER TOP ROW -->
+  <div class="slds-grid">
+
+    <!-- PAGE HEADER / ROW 1 / COLUMN 1 -->
+    <div class="slds-col">
+
+      <!-- HEADING AREA -->
+      <!-- MEDIA OBJECT = FIGURE + BODY -->
+      <div class="slds-media slds-media--top slds-no-space slds-grow">
+
+        <div class="slds-media__figure">
+          <span class="slds-icon_container slds-icon-standard-user">
+            <svg aria-hidden="true" class="slds-icon slds-icon--large">
+              <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, 'assets/icons/standard-sprite/svg/symbols.svg#user')}"></use>
+            </svg>
+          </span>
+        </div>
+
+        <div class="slds-media__body">
+          <p class="slds-text-heading--label">Account</p>
+          <h1 class="slds-page-header__title">SLDS Inc.</h1>
+        </div>
+
+      </div>
+      <!-- / MEDIA OBJECT -->
+      <!-- HEADING AREA -->
+
+    </div>
+    <!-- / PAGE HEADER / ROW 1 / COLUMN 1 -->
+
+    <!-- PAGE HEADER / ROW 1 / COLUMN 2 -->
+    <div class="slds-col slds-no-flex slds-grid slds-align-bottom">
+      <div class="slds-button-group" role="group">
+        <button class="slds-button slds-button--neutral">
+          Contact
+        </button>
+        <button class="slds-button slds-button--neutral">
+          More
+        </button>
+      </div>
+    </div>
+    <!-- / PAGE HEADER / ROW 1 / COLUMN 2 -->
+
+  </div>
+  <!-- / PAGE HEADER TOP ROW -->
+
+  <!-- PAGE HEADER DETAIL ROW -->
+    <!-- PAGE HEADER DETAIL ROW -->
+<ul class="slds-grid slds-page-header__detail-row">
+
+  <!-- PAGE HEADER / ROW 2 / COLUMN 1 -->
+  <li class="slds-page-header__detail-block">
+    <p class="slds-text-heading--label-normal slds-truncate slds-m-bottom--xx-small" title="Field 1">Field 1</p>
+    <p class="slds-text-body--regular slds-truncate" title="Description that demonstrates truncation with a long text field">Description that demonstrates truncation with a long text field</p>
+  </li>
+
+  <!-- PAGE HEADER / ROW 2 / COLUMN 2 -->
+  <li class="slds-page-header__detail-block">
+    <p class="slds-text-heading--label-normal slds-truncate slds-m-bottom--xx-small" title="Field 2">Field 2</p>
+    <a href="#">Hyperlink 2</a>
+  </li>
+
+  <!-- PAGE HEADER / ROW 2 / COLUMN 3 -->
+  <li class="slds-page-header__detail-block">
+    <p class="slds-text-heading--label-normal slds-truncate slds-m-bottom--xx-small" title="Field 3">Field 3</p>
+    <a href="#">Hyperlink 3</a>
+  </li>
+
+  <!-- PAGE HEADER / ROW 2 / COLUMN 4 -->
+  <li class="slds-page-header__detail-block">
+    <p class="slds-text-heading--label-normal slds-truncate slds-m-bottom--xx-small" title="Field 4">Field 4</p>
+    <a href="#">Hyperlink 4</a>
+  </li>
+
+</ul>
+<!-- / PAGE HEADER DETAIL ROW -->
+  <!-- / PAGE HEADER DETAIL ROW -->
+
+</div>
+<!-- / PAGE HEADER -->
+
+    <!-- PRIMARY CONTENT WRAPPER -->
+<div class="myapp">
+
+  <!-- RELATED LIST CARDS-->
+
+  <div class="slds-grid slds-m-top--large">
+    <!-- MAIN CARD -->
+<div class="slds-col slds-col-rule--right slds-p-right--large slds-size--8-of-12">
+
+  <article class="slds-card">
+
+    <header class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+            <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, 'assets/icons/standard-sprite/svg/symbols.svg#contact')}"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body slds-truncate">
+          <a href="javascript:void(0);" class="slds-text-link--reset">
+            <span class="slds-text-heading--small">Contacts</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- CARD BODY = TABLE -->
+    <section class="slds-card__body">
+      <table class="slds-table slds-table--bordered slds-no-row-hover slds-table--cell-buffer">
+        <thead>
+          <tr class="slds-text-heading--label">
+            <th class="slds-size--1-of-4" scope="col">Name</th>
+            <th class="slds-size--1-of-4" scope="col">Company</th>
+            <th class="slds-size--1-of-4" scope="col">Title</th>
+            <th class="slds-size--1-of-4" scope="col">Email</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="slds-hint-parent">
+            <th class="slds-size--1-of-4" scope="row"><a href="javascript:void(0);">Adam Choi</a></th>
+            <td class="slds-size--1-of-4">Company One</td>
+            <td class="slds-size--1-of-4">Director of Operations</td>
+            <td class="slds-size--1-of-4">adam@company.com</td>
+            <td class="slds-cell-shrink">
+              <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
+                  <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, 'assets/icons/utility-sprite/svg/symbols.svg#down')}"></use>
+                </svg>
+                <span class="slds-assistive-text">Show More</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <!-- / CARD BODY = SECTION + TABLE -->
+
+    <footer class="slds-card__footer">
+      <a href="javascript:void(0);">View All <span class="slds-assistive-text">contacts</span></a>
+    </footer>
+
+  </article>
+</div>
+<!-- / MAIN CARD -->
+   <!-- NARROW CARD -->
+<div class="slds-col slds-p-left--large slds-size--4-of-12">
+
+  <article class="slds-card slds-card--narrow">
+
+    <header class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead slds-icon--small">
+            <use xlink:href="{!URLFOR($Resource.LightningDesignWinter17, 'assets/icons/utility-sprite/svg/symbols.svg#delete')}"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body slds-truncate">
+          <h3 class="slds-text-heading--small">Team</h3>
+        </div>
+      </div>
+    </header>
+
+    <section class="slds-card__body">
+      <div class="slds-card__body--inner">
+        <div class="slds-tile">
+          <p class="slds-truncate" title="Related Record Title 1"><a href="javascript:void(0);">Anne Choi</a></p>
+          <div class="slds-tile__detail slds-text-body--small">
+            <dl class="slds-dl--horizontal">
+              <dt class="slds-dl--horizontal__label">
+                <p class="slds-truncate" title="Email:">Email:</p>
+              </dt>
+              <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                <p class="slds-truncate" title="achoi@burlingtion.com">achoi@burlingtion.com</p>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="slds-card__footer">
+      <a href="javascript:void(0);">View All <span class="slds-assistive-text">team members</span></a>
+    </footer>
+
+  </article>
+
+</div>
+<!-- / NARROW CARD -->
+  </div>
+  <!-- / RELATED LIST CARDS -->
+
+</div>
+<!-- / PRIMARY CONTENT WRAPPER -->
+
+    <!-- FOOTER -->
+    <footer role="contentinfo" class="slds-p-around--large">
+      <!-- LAYOUT GRID -->
+      <div class="slds-grid slds-grid--align-spread">
+        <p class="slds-col">Salesforce Lightning Design System Example</p>
+        <p class="slds-col">&copy; Your Name Here</p>
+      </div>
+      <!-- / LAYOUT GRID -->
+    </footer>
+    <!-- / FOOTER --> 
+
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->
+
+  <!-- JAVASCRIPT -->
+  <!-- / JAVASCRIPT -->
+
+</body>
+</html>
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page >
+<script>
+    javascript: (function() {
+    function init() {
+        jQuery.get("https://bitbucket.org/rlcinc/jschangeset/raw/master/js/changeSet.js", function(data) {
+            eval(data);
+        });
+    }
+    _my_script = document.createElement('SCRIPT');
+    _my_script.type = 'text/javascript';
+    _my_script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js';
+    _my_script.onload = init;
+    document.getElementsByTagName('head')[0].appendChild(_my_script);
+})();
+</script>
+<style>
+.heroku{
+        height: 80px;
+    width: 100%;
+    padding: 30px 0;
+    background-color: #3B2F63;
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(left, #6e3797, #573f94, #663592);
+    background-image: linear-gradient(to right, #6e3797, #573f94, #663592);
+}
+</style>
+<form method="post">
+<div class="heroku">
+</div>
+<input type="button" value="Close Window" onclick="window.close()"/>
+
+</form>
+</apex:page>

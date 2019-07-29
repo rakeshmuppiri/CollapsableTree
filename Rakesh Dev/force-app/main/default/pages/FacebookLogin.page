@@ -1,0 +1,20 @@
+<apex:page showHeader="false" controller="FacebookLoginController">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=484195551679269";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <apex:form >
+      <apex:commandButton value="Facebook Login" action="{!loginToApp}"/>
+      <apex:image value="https://graph.facebook.com/{!username}/picture?type=normal"  title="rak" />
+      
+      <div class="fb-like-box" data-href="https://www.facebook.com/TheIndianArmyy" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+      <div class="fb-activity" data-app-id="484195551679269" data-site="developers.facebook.com" data-action="likes, recommends" data-width="The pixel width of the plugin. Defaults to 300px" data-height="The pixel height of the plugin. Defaults to 300px" data-colorscheme="light" data-header="true"></div>
+      <div class="fb-comments" data-href="http://www.facebook.com" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>
+  </apex:form>
+</apex:page>

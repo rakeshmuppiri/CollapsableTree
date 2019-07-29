@@ -1,0 +1,276 @@
+<apex:page showHeader="false" standardStylesheets="false">
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Support Center</title>
+        <apex:stylesheet value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/foundation.css')}"/>
+         <apex:stylesheet value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/app.css')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.LightningDesignWinter17, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+
+        <apex:stylesheet value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/foundation-icons/foundation-icons.css')}"/>
+        <style>
+            .bannerMain {
+                height:20rem; 
+                background-image: url("{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/banner-bg.png')}");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            i {
+                font-size: 2.5rem;
+            }
+            
+            .searchText {
+                font-family: proxima-nova, sans-serif;
+                font-size: 3.5rem;
+                font-weight: bold;
+                color:#ffffff;
+                margin:1.2rem;
+            }  
+            
+            .lblPopular {
+                color:#ffffff;
+                font-weight:bold;
+                font-size:14px;
+                margin:1.2rem;
+            }
+            
+            .cardholder {
+            	margin: 3.343rem 1.6rem;
+                border-style: solid
+                border-width: 1px;
+                border-color: #D8DDE6;
+                width: 30%;
+                height: 15rem;
+                background-color: #ffffff;
+            	float:left;
+            }
+            
+            .fullWidth {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: initial;
+            }
+            
+            .cardText {
+                color: #222222;
+                font-weight: semi-bold;
+                font-size: 14px;
+            }
+            
+            input::-webkit-input-placeholder {
+                color:#54698D;
+                font-size: 1.167rem;
+                font-weight: bold;
+            }
+            
+            input::-moz-placeholder {
+                color:#54698D;
+                font-size: 1.167rem;
+                font-weight: bold;
+            }
+            
+            input::-ms-input-placeholder {
+                color:#54698D;
+                font-size: 1.167rem;
+                font-weight: bold;
+            }
+            .search-magnifier-button{
+                display: inline-block;
+                text-align: center;
+                line-height: 1;
+                cursor: pointer;
+                -webkit-appearance: none;
+                transition: background-color 0.25s ease-out, color 0.25s ease-out;
+                vertical-align: middle;
+                border: 1px solid transparent;
+                border-radius: 3px;
+                padding: 0.55em;
+                margin: 0.67rem 0.5rem 1rem -3.9rem;
+                font-size: 0.9rem;
+                background-color: #fefefe;
+                color: #6CA8D2 ;
+            }
+            .search-magnifier-button:hover{
+                background-color: #fefefe;
+                color: #1B6497 ;
+            }
+           .searchInputText{
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                height: 2.4375rem;
+                padding: 0.5rem;
+                border: 1px solid #cacaca;
+                margin: 0 0 1rem;
+                font-family: inherit;
+                font-size: 1rem;
+                color: #0a0a0a;
+                background-color: #fefefe;
+                box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+                border-radius: 3px;
+                transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            	float:left;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/logo.png')}" />
+            </div>
+            <div class="top-bar-right">
+                <ul class="vertical medium-horizontal menu">
+                    <li ><a href="#">DOCUMENTATION</a></li>
+                    <li ><a href="#">DISCUSSION</a></li>
+                    <li ><a href="#">IDEAS</a></li>
+                    <li ><a href="#">SUPPORT</a></li>
+                    <li ><a href="#">PROCESS LIBRARY</a></li>
+                    <li ><a href="#">UNIVERSITY</a></li>
+                    <li ><a href="#">PROFILE</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bannerMain">
+            <div class="row" align="center">
+                <label class="searchText">How can we help you?</label>
+            </div>
+            <div class="row" align="center">
+                <form>
+                    <div class="row collapse">
+                        <div class="large-1 columns">&nbsp;</div>
+                        <div class="large-10 columns ">
+                            <input class="searchInputText" type="text" placeholder="Search the community or ask a question" style="height:50px;"/>
+                        	<span class="search-magnifier-button postfix" style="float:right;">
+                     			<apex:image value="{!URLFOR($Resource.SearchIcon)}" height="20" width="20"/>
+                            </span>
+                        </div>
+                        <div class="large-1 columns">&nbsp;</div>
+                    </div>
+                </form>
+            </div>
+            <div class="row" align="center">
+                <label class="lblPopular">Popular subjects: omniscript, dataraptor, industry console</label>
+            </div>
+        </div>
+        
+         <div style="background-color:#f8f8f8;" class="LightningDesignWinter17">
+             <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                 <div class="slds-size--1-of-8">left</div>
+                 <div class="slds-p-horizontal--xx-small slds-size--6-of-8">
+                 	 <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                     <div class="slds-m-vertical--medium slds-size--2-of-6 slds-p-horizontal--xx-small slds-large-size--2-of-6">
+                         <article class="slds-card slds-p-vertical--medium slds-align--absolute-center slds-p-horizontal--xx-large">
+                         <section class="slds-card__body ">
+                             <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/documentation.png')}" />
+                             <label class="cardText">DOCUMENTATION</label>
+                         </section>
+                         </article>
+                     </div>
+                     <div class="slds-m-vertical--medium slds-size--2-of-6 slds-p-horizontal--xx-small">
+                        <article class="slds-card slds-p-vertical--medium slds-align--absolute-center slds-p-horizontal--xx-large">
+                         <section class="slds-card__body ">
+                             <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/documentation.png')}" />
+                             <label class="cardText">DOCUMENTATION</label>
+                         </section>
+                         </article> 
+                     </div>
+                     <div class="slds-m-vertical--medium slds-size--2-of-6 slds-p-horizontal--xx-small">
+                         <article class="slds-card slds-p-vertical--medium slds-align--absolute-center slds-p-horizontal--xx-large">
+                         <section class="slds-card__body">
+                             <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/documentation.png')}" />
+                             <label class="cardText">DOCUMENTATION</label>
+                         </section>
+                         </article>
+                     </div>
+                     </div>
+                 </div>
+                 <div class="slds-size--1-of-8">right</div>
+              </div>
+             <!--
+             <div class="row fullWidth" align="center">
+                 
+                 
+                 <div class="large-1 medium-1 columns">&nbsp;</div>
+                 <div class="large-10 medium-10 columns ">
+                     
+                         <div class="large-4 medium-4 columns cardholder">
+                             <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/documentation.png')}" />
+                             <label class="cardText">DOCUMENTATION</label>
+                         </div>
+                         <div class="large-4 medium-4 columns cardholder" >
+                             <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/discussion.png')}" />
+                             <label class="cardText">DISCUSSION</label>
+                         </div>
+                         <div class="large-4 medium-4 columns cardholder">
+                             <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/ideas.png')}" />
+                             <label class="cardText">IDEAS</label>
+                         </div>
+                     
+                 </div>
+                  <div class="large-1 medium-1 columns">&nbsp;</div>
+				
+             </div>
+-->
+        </div>
+        
+        <div style="background-color:#f8f8f8;">
+            
+            <div class="row fullWidth">
+                <div class="large-1 columns">&nbsp;</div>
+                <div class="large-3 columns cardholder" align="center">
+                    <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/documentation.png')}" />
+                    <label class="cardText">DOCUMENTATION</label>
+                </div>
+                <div class="large-3 columns cardholder" align="center">
+                    <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/discussion.png')}" />
+                    <label class="cardText">DISCUSSION</label>
+                </div>
+                <div class="large-3 columns cardholder" align="center">
+                    <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/ideas.png')}" />
+                    <label class="cardText">IDEAS</label>
+                </div>
+                <div class="large-1 columns">&nbsp;</div>
+            </div>
+            
+            <div class="row fullWidth">
+                <div class="large-1 columns">&nbsp;</div>
+                <div class="large-3 columns cardholder" align="center">
+                    <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/support.png')}" />
+                    <label class="cardText">SUPPORT</label>
+                </div>
+                <div class="large-3 columns cardholder" align="center">
+                    <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/process-libray.png')}" />
+                    <label class="cardText">PROCESS LIBRARY</label>
+                </div>
+                <div class="large-3 columns cardholder" align="center">
+                    <apex:image value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/images/vlocity-university.png')}" />
+                    <label class="cardText">VLOCITY UNIVERSITY</label>
+                </div>
+                <div class="large-1 columns">&nbsp;</div>
+            </div>
+        
+        
+        
+        <apex:outputLabel value="{!$User.FirstName}"></apex:outputLabel>
+        <label>
+            <a href="{!$Site.Prefix}/secur/logout.jsp">Logout</a>
+        </label>    
+        </div>
+        
+        <div id="footerDiv">
+            
+        </div>
+        <apex:includeScript value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/jquery.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/what-input.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/foundation.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.SupportCenter, 'SupportCenter/app.js')}"/>
+    </body>
+</apex:page>

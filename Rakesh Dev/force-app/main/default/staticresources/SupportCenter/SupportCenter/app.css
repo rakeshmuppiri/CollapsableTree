@@ -1,0 +1,23 @@
+html {
+	font-size: 12px;  /* 1rem = 12px */
+	-ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.top-bar {
+	background-color: #000000;
+	padding: 0.4155rem;
+}
+
+.top-bar ul {
+	background-color: #000000;
+}
+
+a {
+	color:#c8c8c8;
+	font-family: proxima-nova, sans-serif;
+	margin-top: 1rem;
+	}
+	a:hover, a:focus {
+    color: #ffffff; }
+}

@@ -1,0 +1,3 @@
+<apex:page controller="ReadExcelCntrl" action="{!CreateCustomObjectRecords}">
+
+</apex:page>

@@ -1,0 +1,171 @@
+<aura:component  implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="PicklistValuesController">
+    <aura:attribute name="newLeadFields" type="Object" />
+    <aura:attribute name="newLead" type="Object"/>
+	<aura:attribute name="newLeadError" type="String"/>
+    <aura:attribute name="sObjectName" type="String" default="Lead"></aura:attribute>
+	 <aura:attribute name="recordId" type="String" />
+
+    <force:recordData aura:id="leadRecordCreator"
+                      recordId="{!v.recordId}"
+                      layoutType="FULL"
+                      targetRecord="{!v.newLead}"
+                      targetFields="{!v.newLeadFields}"
+                      targetError="{!v.newContactError}" />
+	
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+     <aura:attribute name="Spinner" type="boolean" default="false"/>
+
+ <aura:if isTrue="{!v.Spinner}">
+    <div aura:id="spinnerId" class="slds-spinner_container">
+       <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+         <span class="slds-assistive-text">Loading</span>
+         <div class="slds-spinner__dot-a"></div>
+         <div class="slds-spinner__dot-b"></div>
+       </div>
+    </div>
+    </aura:if>
+     
+    <div aura:id="editDialog" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container slds-clearfix slds-card groupDependentFieldEnabled forceDetailPanelDesktop">
+            <div class="slds-modal__header">
+                <h2 class="slds-text-heading--medium">New Lead</h2>
+            </div>
+            
+            <div class="slds-modal__content slds-p-around--medium slds-grid slds-wrap ">
+                <h3 class="slds-section__title slds-theme--shade primaryPaletteBorder slds-size--1-of-1 slds-m-bottom_small">
+                <span class="section-header-title slds-p-horizontal--small slds-truncate">Lead Information</span>
+            </h3>
+                
+				<div class="form-element__group slds-size--1-of-1">
+                    <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                        <label class="slds-form-element__label" for="leadSource">Salutation</label>
+                        <ui:inputSelect value="{!v.newLeadFields.Salutation}"  aura:id="leadSalutation" class="slds-select" />
+                    </div>
+                    <lightning:input aura:id="firstName" value="{!v.newLeadFields.FirstName}" name="firstName" label="FirstName" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                    <lightning:input aura:id="lastName" value="{!v.newLeadFields.LastName}" name="lastName" label="LastName" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                    <lightning:input aura:id="suffix" value="{!v.newLeadFields.Suffix}" name="suffix" label="Suffix" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                </div>
+                <lightning:input aura:id="title" value="{!v.newLeadFields.Title}" name="title" label="Title" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                    <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="leadStatus">Lead Status</label>
+                     <ui:inputSelect value="{!v.newLeadFields.Status}"  aura:id="leadStatus" class="slds-select"/>
+                </div>
+                <lightning:input type="email" aura:id="leadEmail" value="{!v.newLeadFields.Email}" name="leadEmail" label="Email" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="leadStatus">Industry</label>
+                     <ui:inputSelect value="{!v.newLeadFields.Industry}"  aura:id="leadIndustry" class="slds-select" />
+                </div>
+                <lightning:input aura:id="leadPhone" value="{!v.newLeadFields.Phone}" name="leadPhone" label="Phone" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+               <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="leadSource">Lead Source</label>
+                     <ui:inputSelect value="{!v.newLeadFields.LeadSource}"  aura:id="leadSource" class="slds-select">
+                         
+                   </ui:inputSelect>
+               </div>
+                <lightning:input aura:id="leadMobile" value="{!v.newLeadFields.MobilePhone}" name="leadMobile" label="Mobile" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input aura:id="leadFax" value="{!v.newLeadFields.Fax}" name="leadFax" label="Company Fax" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="leadSource">Rating</label>
+                     <ui:inputSelect value="{!v.newLeadFields.Rating}"  aura:id="leadRating" class="slds-select"/>
+               </div>
+                
+                <lightning:input aura:id="leadSIC" value="{!v.newLeadFields.SIC_Code__c}" name="leadSIC" label="SIC Code" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                
+                <lightning:input aura:id="leadAccount" value="{!v.newLeadFields.Company}" name="leadAccount" label="Company" required="true" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input aura:id="leadSICDescription" value="{!v.newLeadFields.SIC_Description__c}" name="leadSICDescription" label="SIC Description" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input aura:id="leadCompEmail" type="email" value="{!v.newLeadFields.Company_Email__c}" name="leadCompEmail" label="Company Email" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="form-element-01">Do Not Contact Organization</label>
+                    <br/>
+                    <lightning:input aura:id="dontContactCheckBox" type="checkbox"
+					label=""
+                    name="dontContactCheckBox" value="" checked="{!v.newLeadFields.Do_not_contact_Organization__c}"/>
+                </div>
+                <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="leadCorpLang">Corporate Language</label>
+                     <ui:inputSelect value="{!v.newLeadFields.Corporate_Language__c}"  aura:id="leadCorpLang" class="slds-select"/>
+               </div>
+                
+                
+                <lightning:input type="number"  aura:id="leadNoOfEmp" value="{!v.newLeadFields.NumberOfEmployees}" name="leadNoOfEmp" label="No. of Employees" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input type="url"  aura:id="leadWebsite" value="{!v.newLeadFields.Website}" name="leadWebsite" label="Website" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input aura:id="leadServiceProvider" value="{!v.newLeadFields.Service_Provider__c}" name="leadServiceProvider" label="Service Provider" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input messageWhenPatternMismatch="You have exceeded the limit of 20 characters!"
+            					pattern=".{0,20}" aura:id="leadVATIN" value="{!v.newLeadFields.VATIN__c}" name="leadVATIN" label="VATIN" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                  <label class="slds-form-element__label" for="leadCorpLang">Monitoring Trust Status</label>
+                     <ui:inputSelect value="{!v.newLeadFields.Monitoring_Trust_Status__c}"  aura:id="leadMonTrustStatus" class="slds-select"/>
+               </div>
+                 <lightning:input messageWhenPatternMismatch="You have exceeded the limit of 20 characters!"
+            					pattern=".{0,20}" aura:id="leadCompRegNum" value="{!v.newLeadFields.Company_Registration_Number__c}" name="leadCompRegNum" label="Company Registration Number" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                
+                
+            
+            	<h3 class="slds-section__title slds-theme--shade primaryPaletteBorder slds-size--1-of-1">
+                	<span class="section-header-title slds-p-horizontal--small slds-truncate">Address Information</span>
+            	</h3>
+                <div class="form-element__group slds-size--1-of-2">
+                    <div class="form-element__row">
+                    <lightning:textarea name="street" label="Street" value="{!v.newLeadFields.Street}" class=" slds-p-horizontal_x-small slds-m-bottom_small" />
+                    
+                    </div>
+                    <div class="form-element__row slds-size--1-of-1">
+                        <div class="inlineField form-element__control slds-size--4-of-6">
+                            <lightning:input name="city" label="City" value="{!v.newLeadFields.City}" class="slds-p-horizontal_x-small slds-m-bottom_small" />
+                        </div>
+                        <div class="inlineField form-element__control slds-size--2-of-6">
+                        <lightning:input name="state" label="State/Province" value="{!v.newLeadFields.State}" class="inlineField form-element__control slds-p-horizontal_x-small slds-m-bottom_small" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-element__row slds-size--1-of-1">
+                        <div class="inlineField form-element__control slds-size--4-of-6">
+                            <lightning:input name="zipcode" label="Zip/Postal Code" value="{!v.newLeadFields.PostalCode}" class="slds-p-horizontal_x-small slds-m-bottom_small" />
+                        </div>
+                        <div class="inlineField form-element__control slds-size--2-of-6">
+                        <lightning:input name="country" label="Country" value="{!v.newLeadFields.Country}" class="inlineField form-element__control slds-p-horizontal_x-small slds-m-bottom_small" />
+                        </div>
+                    </div>
+                </div>
+                <h3 class="slds-section__title slds-theme--shade primaryPaletteBorder slds-size--1-of-1">
+                	<span class="section-header-title slds-p-horizontal--small slds-truncate">Additional Information</span>
+            	</h3>
+                <div class="form-element__group slds-size--1-of-2">
+                    <div class="slds-form-element slds-p-horizontal_x-small slds-m-bottom_small">
+                        <label class="slds-form-element__label" for="leadcurrency">Lead Currency</label>
+                        <ui:inputSelect value="{!v.newLeadFields.CurrencyIsoCode}"  aura:id="leadcurrency" class="slds-select"/>
+                    </div>
+                </div>
+                
+                <h3 class="slds-section__title slds-theme--shade primaryPaletteBorder slds-size--1-of-1 slds-m-bottom_small">
+                	<span class="section-header-title slds-p-horizontal--small slds-truncate">Descriptive Information</span>
+            	</h3>
+                 <div class="form-element__group slds-size--1-of-2">
+                    <ui:inputSelect value="{!v.newLeadFields.Services_of_Interest__c}" multiple="true" label="Service of Interest" class="multiple slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" aura:id="serviceOfInterest"/>
+                    
+                    </div>
+                <lightning:input name="weToLead" label="Web-to-Lead_Product" value="{!v.newLeadFields.Web_to_Lead_Product__c}" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                
+                <h3 class="slds-section__title slds-theme--shade primaryPaletteBorder slds-size--1-of-1 slds-m-bottom_small">
+                	<span class="section-header-title slds-p-horizontal--small slds-truncate">Business Data</span>
+            	</h3>
+                <lightning:input type="number" maxlength="18" aura:id="leadAnnualRevenue" value="{!v.newLeadFields.AnnualRevenue}" name="leadAnnualRevenue" label="Annual Revenue" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input type="number" maxlength="18" aura:id="leadNoOfInvoice" value="{!v.newLeadFields.No_of_Invoices__c}" label="No of Invoices" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                <lightning:input type="number" maxlength="18" aura:id="leadAvgInvoice" value="{!v.newLeadFields.Average_Invoice_Amount__c}"  label="Average Invoice Amount" class="slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small" />
+                
+                <div class="slds-form-element slds-size--1-of-2 slds-p-horizontal_x-small slds-m-bottom_small">
+                  <label class="slds-form-element__label">Type of Debtors</label>
+                     <ui:inputSelect value="{!v.newLeadFields.Type_of_Debtors__c}"  aura:id="leadTypeOfDebtors" class="slds-select"/>
+               </div>
+                
+            </div>
+            <div class="slds-modal__footer">
+                <lightning:button variant="neutral" label="Cancel" onclick="{!c.closeModel}"/>
+                <lightning:button variant="brand" label="Submit" onclick="{!c.handleSaveLead}" />
+            </div>
+        </div>
+    </div>
+            <div aura:id="overlay" class="slds-backdrop slds-backdrop--open"></div>
+
+
+</aura:component>

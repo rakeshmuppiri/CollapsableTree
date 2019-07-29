@@ -1,0 +1,28 @@
+<apex:page standardController="Account">
+<style>
+h1{color:red}
+ 
+</style>
+    <apex:form >
+        Hello :{!$User.FirstName}
+        <apex:pageBlock title="Displaying contacts">
+            <apex:pageBlockTable value="{!account.contacts}" var="cts">
+            
+             <apex:column headerValue="Account name">
+                 <apex:commandLink value="{!account.name}" action="https://ap1.salesforce.com/{!account.id}" />
+             </apex:column>
+             
+               
+                
+                <apex:column headerValue="Contact">
+                <h1>
+                    <apex:commandLink value="{!cts.name}" action="https://ap1.salesforce.com/{!cts.id}" />
+                </h1>
+                </apex:column>
+                
+            </apex:pageBlockTable>
+        
+        </apex:pageBlock>
+    </apex:form>
+  
+</apex:page>

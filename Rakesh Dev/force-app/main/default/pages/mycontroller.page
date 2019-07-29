@@ -1,0 +1,13 @@
+<apex:page controller="MyController1" tabstyle="Account" >
+    <apex:form >
+        <apex:pageblock title="Hello {!$User.FirstName}">
+        
+            Name:<apex:inputField value="{!acc.name}" id="accname"/>
+            
+            Site:<apex:inputField value="{!acc.site}"/>
+            <apex:commandButton action="{!save}" value="Save !"/>
+            <apex:commandButton action="{!clone}" value="clone !"/>
+        </apex:pageblock>
+    </apex:form>
+  
+</apex:page>

@@ -1,0 +1,63 @@
+.THIS.gallery-container {
+	margin:0 auto;
+	text-align:center;
+	overflow:hidden;
+}
+
+.THIS.gallery-header {
+	color:#ccc;
+}
+
+.THIS .dark, .THIS.dark {
+	background:#000;
+	color:#ccc;
+}
+
+.THIS svg.slds-icon.slds-icon-text-default.slds-icon_small {
+    fill: #ccc;
+}
+
+.THIS .image-size-Small {
+	/*width:350px;*/
+	height: 15vw;
+	float:left;
+}
+
+.THIS .image-size-Medium {
+	/*width:640px;*/
+	height: 30vw;
+	/*30*1.417    41.5*/
+}
+
+.THIS .image-size-Big {
+	width:800px;
+}
+
+.THIS h2, h2.THIS {
+	font-size: 200%;
+} 
+
+.THIS .date-icon {
+    margin: 0 8px 2px 0;
+    vertical-align: middle;
+}
+
+.THIS .slds-modal__container {
+	min-width: 10rem;
+	height: initial !important;
+	/*width:90%;*/
+	max-width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.THIS .slds-modal__content {
+	background: transparent;
+}
+.THIS.onTop {
+    z-index: 100000 !important;
+}
+
+.THIS.slds-hide, .THIS .slds-hide {
+	display: none;
+}

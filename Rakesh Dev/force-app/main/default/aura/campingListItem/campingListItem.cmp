@@ -1,0 +1,68 @@
+<aura:component >
+    <ltng:require styles="{!$Resource.LightningDesignWinter17+'/assets/styles/salesforce-lightning-design-system-vf.min.css'}" />
+
+	<aura:attribute name="item" type="Camping_Item__c" required="true"></aura:attribute>
+     <div class="LightningDesignWinter17"> 
+    <div class="slds-grid slds-m-top--large">
+    <div class="slds-col slds-p-left--large slds-size--4-of-12">
+
+  <article class="slds-card slds-card--narrow">
+
+    <header class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <span  aria-hidden="true" class="slds-icon slds-icon-standard-lead slds-icon--small">
+              <!-- <use xlink:href="{!$Resource.LightningDesignWinter17+'/assets/icons/standard-sprite/svg/symbols.svg#lead'}"></use> -->
+          	  <c:svgIcon svgPath="/LightningDesignWinter17/slds212/assets/icons/standard-sprite/svg/symbols.svg#lead" category="standard" size="large" name="Camping" />
+          </span >
+        </div>
+        <div class="slds-media__body slds-truncate">
+          <h3 class="slds-text-heading--small">
+          	<ui:outputText value="{!v.item.Name}"></ui:outputText>
+          </h3>
+        </div>
+      </div>
+    </header>
+
+    <section class="slds-card__body">
+      <div class="slds-card__body--inner">
+        <div class="slds-tile">
+          <p class="slds-truncate" title="Related Record Title 1"><a href="javascript:void(0);"><ui:outputText value="{!v.item.Name}"></ui:outputText></a></p>
+          <div class="slds-tile__detail slds-text-body--small">
+            <dl class="slds-dl--horizontal">
+              <dt class="slds-dl--horizontal__label">
+                <p class="slds-truncate" title="Quantity">Quantity:</p>
+              </dt>
+              <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                <p class="slds-truncate" >
+                	<ui:outputNumber value="{!v.item.Vlabs__Quantity__c}"></ui:outputNumber>
+                </p>
+              </dd>
+              <dt class="slds-dl--horizontal__label">
+                <p class="slds-truncate" title="Quantity">Price:</p>
+              </dt>
+              <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                <p class="slds-truncate" title="{!v.item.Vlabs__Price__c}">
+                	<ui:outputCurrency value="{!v.item.Vlabs__Price__c }"></ui:outputCurrency>
+                </p>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="slds-card__footer">
+      <a href="javascript:void(0);">View All <span class="slds-assistive-text">team members</span></a>
+    </footer>
+
+  </article>
+<ui:outputCheckbox value="{!v.item.Packed__c}"></ui:outputCheckbox>
+    <ui:button label="Packed!" press="{!c.packItem}"></ui:button>
+</div>
+    </div>
+</div>
+    
+    
+    
+</aura:component>
