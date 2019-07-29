@@ -1,6 +1,0 @@
-<apex:page >
- <div id="liveagent_invite_button_57328000000TNrc">
-     <span style="cursor: pointer; width: 100px; height: 20px; padding: 5px;" onclick="liveagent.startChat('57328000000TNrc')">Start Chat</span>
-     <span style="cursor: pointer; width: 100px; height: 20px; padding: 5px;" onclick="liveagent.rejectChat('57328000000TNrc')">Reject Chat</span>
-     </div>
-</apex:page>

@@ -1,8 +1,0 @@
-<design:component label="Epic Image Gallery">
-    <design:attribute name="galleryTitle" label="Title of Gallery"/>
-    <design:attribute name="resourceName" label="Name of resource or Gallery folder" />
-    <design:attribute name="resourceType" label="Static Resource or Files Gallery" 
-    	datasource="Library, Static Resource"/>
-    <design:attribute name="galleryDate" label="Date of event (example: 2018-12-24)" />
-    <design:attribute name="imageSize" label="Image Size" datasource="Small,Medium,Large"/>
-</design:component>

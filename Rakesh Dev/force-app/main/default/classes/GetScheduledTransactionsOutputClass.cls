@@ -1,3 +1,0 @@
-public class GetScheduledTransactionsOutputClass{
-    public GetScheduledTransactionsOutAccountClass GetScheduledTransactionsOutput;
-}

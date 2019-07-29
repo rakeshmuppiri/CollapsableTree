@@ -1,5 +1,0 @@
-<apex:page >
-  <apex:insert name="body">
-  This is basic template body....
-  </apex:insert>
-</apex:page>

@@ -1,4 +1,0 @@
-<apex:page controller="URLDecodingHide">
-{!decryptedString}
-{!decrypted}
-  </apex:page>

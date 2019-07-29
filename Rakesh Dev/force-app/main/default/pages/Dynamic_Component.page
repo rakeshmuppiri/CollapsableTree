@@ -1,7 +1,0 @@
-<apex:page controller="Dynamic_ComponentCntrl" >
-<apex:form >
-  <apex:pageBlock >
-    <apex:dynamicComponent componentValue="{!dynamicComponent}" />
-</apex:pageBlock>
-</apex:form>
-</apex:page>
